@@ -61,14 +61,17 @@ void table_from_file(WeatherTable a, const char *filepath) {
         int res = fscanf(file, " %u %u %u ", &k_year, &k_month, &k_day);
         if (res != 3) {
             fprintf(stderr, "Invalid table.\n");
+            fprintf(stderr, "%d.\n", res);
+            fprintf(stderr, "Year: %d Month: %d Day: %d\n", k_year, k_month, k_day);
+            fprintf(stderr, "Year: %d Month: %d Day: %d\n", k_year-FST_YEAR, k_month-january, k_day-1);
             exit(EXIT_FAILURE);
         }
 
         // Ir a la función 'weather_from_file' en weather.c y completar!
         Weather weather = weather_from_file(file);
-
         // También completar acá:
         // Guardar la medición de clima en el arreglo multidimensional.
+        a[k_year-FST_YEAR][k_month-1][k_day-1] = weather;
     }
 
     fclose(file);
