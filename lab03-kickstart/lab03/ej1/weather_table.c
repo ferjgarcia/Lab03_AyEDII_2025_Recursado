@@ -61,9 +61,6 @@ void table_from_file(WeatherTable a, const char *filepath) {
         int res = fscanf(file, " %u %u %u ", &k_year, &k_month, &k_day);
         if (res != 3) {
             fprintf(stderr, "Invalid table.\n");
-            fprintf(stderr, "%d.\n", res);
-            fprintf(stderr, "Year: %d Month: %d Day: %d\n", k_year, k_month, k_day);
-            fprintf(stderr, "Year: %d Month: %d Day: %d\n", k_year-FST_YEAR, k_month-january, k_day-1);
             exit(EXIT_FAILURE);
         }
 
